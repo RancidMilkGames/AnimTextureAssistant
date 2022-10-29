@@ -1,0 +1,235 @@
+[gd_scene load_steps=10 format=3 uid="uid://p1sngq6nsewb"]
+
+[ext_resource type="Script" path="res://addons/anim_text/DropZone.gd" id="1_lid0o"]
+[ext_resource type="Texture2D" uid="uid://eyulp6dhf2tt" path="res://addons/anim_text/Images/spyglass.png" id="2_cnl04"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rqdxj"]
+bg_color = Color(0.321569, 0.321569, 0.321569, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_blend = true
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_75hhb"]
+bg_color = Color(0.176471, 0.176471, 0.176471, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_blend = true
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iespw"]
+bg_color = Color(0.176471, 0.176471, 0.176471, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_blend = true
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cdyji"]
+bg_color = Color(0.0980392, 0.0980392, 0.0980392, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_blend = true
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="Theme" id="Theme_axhy1"]
+Button/styles/hover = SubResource("StyleBoxFlat_rqdxj")
+Button/styles/normal = SubResource("StyleBoxFlat_75hhb")
+Button/styles/pressed = SubResource("StyleBoxFlat_iespw")
+Panel/styles/panel = SubResource("StyleBoxFlat_cdyji")
+
+[sub_resource type="LabelSettings" id="LabelSettings_x3s6m"]
+font_size = 23
+outline_size = 5
+outline_color = Color(0.0980392, 0.0980392, 0.0980392, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_dvjpf"]
+font_size = 22
+
+[node name="AnimTextAssist" type="Control"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_axhy1")
+metadata/_edit_horizontal_guides_ = []
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+offset_right = 1152.0
+offset_bottom = 35.0
+text = "Images to Animated Texture"
+label_settings = SubResource("LabelSettings_x3s6m")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="DropZone" type="Panel" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+offset_top = 39.0
+offset_right = 1152.0
+offset_bottom = 239.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_lid0o")
+
+[node name="Label" type="Label" parent="VBoxContainer/DropZone"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Drop Images Here"
+label_settings = SubResource("LabelSettings_dvjpf")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+uppercase = true
+
+[node name="ItemList" type="ItemList" parent="VBoxContainer/DropZone"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="FileNameLineEdit" type="LineEdit" parent="VBoxContainer"]
+layout_mode = 2
+offset_top = 243.0
+offset_right = 1152.0
+offset_bottom = 274.0
+size_flags_horizontal = 3
+placeholder_text = "File Name"
+alignment = 1
+max_length = 12
+caret_blink = true
+
+[node name="FileDestCont" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+offset_top = 278.0
+offset_right = 1152.0
+offset_bottom = 309.0
+
+[node name="LineEdit2" type="LineEdit" parent="VBoxContainer/FileDestCont"]
+layout_mode = 2
+offset_right = 1122.0
+offset_bottom = 31.0
+size_flags_horizontal = 3
+tooltip_text = "Destination for new AnimatedTexture"
+text = "res://"
+placeholder_text = "Destination"
+alignment = 1
+max_length = 12
+caret_blink = true
+
+[node name="SearchDestButt" type="Button" parent="VBoxContainer/FileDestCont"]
+layout_mode = 2
+offset_left = 1126.0
+offset_right = 1152.0
+offset_bottom = 31.0
+tooltip_text = "Search for destination folder"
+icon = ExtResource("2_cnl04")
+flat = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+offset_top = 313.0
+offset_right = 1152.0
+offset_bottom = 344.0
+alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+offset_left = 506.0
+offset_top = 2.0
+offset_right = 558.0
+offset_bottom = 28.0
+text = "Speed:"
+
+[node name="SpinBox" type="SpinBox" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+offset_left = 562.0
+offset_right = 645.0
+offset_bottom = 31.0
+tooltip_text = "Speed at which the animation plays. 1 is default."
+min_value = 0.05
+value = 1.0
+alignment = 1
+update_on_text_changed = true
+suffix = "x"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+offset_top = 348.0
+offset_right = 1152.0
+offset_bottom = 379.0
+alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+offset_left = 508.0
+offset_top = 2.0
+offset_right = 556.0
+offset_bottom = 28.0
+text = "Delay:"
+
+[node name="SpinBox" type="SpinBox" parent="VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+offset_left = 560.0
+offset_right = 643.0
+offset_bottom = 31.0
+tooltip_text = "Delay between frames. Default is 1 second."
+min_value = 0.05
+max_value = 10.0
+step = 0.1
+value = 1.0
+allow_greater = true
+alignment = 1
+update_on_text_changed = true
+suffix = "s"
+
+[node name="MakeTextButton" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+offset_top = 383.0
+offset_right = 1152.0
+offset_bottom = 433.0
+text = "Make Texture"
+
+[connection signal="pressed" from="VBoxContainer/FileDestCont/SearchDestButt" to="VBoxContainer/DropZone" method="_on_search_dest_butt_pressed"]
+[connection signal="pressed" from="VBoxContainer/MakeTextButton" to="VBoxContainer/DropZone" method="_on_make_text_pressed"]
