@@ -154,7 +154,6 @@ tooltip_text = "Destination for new AnimatedTexture"
 text = "res://"
 placeholder_text = "Destination"
 alignment = 1
-max_length = 12
 caret_blink = true
 
 [node name="SearchDestButt" type="Button" parent="VBoxContainer/FileDestCont"]
